@@ -1,0 +1,22 @@
+﻿  Assembling Source.asm...
+Source.asm(1): error A2008: syntax error : .
+Source.asm(2): error A2008: syntax error : .
+Source.asm(4): error A2008: syntax error : .
+Source.asm(13): error A2046: missing single or double quotation mark in string
+Source.asm(14): error A2046: missing single or double quotation mark in string
+Source.asm(15): error A2046: missing single or double quotation mark in string
+Source.asm(16): error A2046: missing single or double quotation mark in string
+Source.asm(51): error A2008: syntax error : Invoke
+Source.asm(52): error A2008: syntax error : Start
+Source.asm(52): error A2088: END directive required at end of file
+Source.asm(26): error A2006: undefined symbol : AD43h
+Source.asm(33): error A2006: undefined symbol : Y
+Source.asm(36): error A2006: undefined symbol : Z
+Source.asm(39): error A2006: undefined symbol : Q
+Source.asm(41): error A2022: instruction operands must be the same size
+Source.asm(42): error A2006: undefined symbol : Y
+Source.asm(43): error A2006: undefined symbol : Z
+Source.asm(44): error A2006: undefined symbol : Q
+Source.asm(46): error A2022: instruction operands must be the same size
+Source.asm(10): error A2006: undefined symbol : AD43h
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: выход из команды "ml64.exe /c /nologo /Zi /Fo"x64\Debug\Source.obj" /W3 /errorReport:prompt  /TaSource.asm" с кодом "1".

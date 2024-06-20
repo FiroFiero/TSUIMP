@@ -1,0 +1,3 @@
+﻿  Assembling Source.asm...
+Source.asm(15): error A2006: undefined symbol : AD43h
+C:\Program Files\Microsoft Visual Studio\2022\Preview\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: выход из команды "ml.exe /c /nologo /Zi /Fo"lab 2 var 7\Debug\Source.obj" /W3 /errorReport:prompt  /TaSource.asm" с кодом "1".

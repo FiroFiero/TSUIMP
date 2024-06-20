@@ -1,0 +1,92 @@
+; Объявление данных
+.data
+
+X dd 5429  ; Объявляем переменную X и присваиваем ей значение 5429
+Y dd 7844  ; Объявляем переменную Y и присваиваем ей значение 7844
+Z dd 0AD43h ; Объявляем переменную Z и присваиваем ей значение 0AD43h
+Q dd 5622  ; Объявляем переменную Q и присваиваем ей значение 5622
+L dd 0     ; Объявляем переменную L и инициализируем ее нулем
+M dd 0     ; Объявляем переменную M и инициализируем ее нулем
+R dd 0     ; Объявляем переменную R и инициализируем ее нулем
+
+; Код программы
+.code
+
+Start:
+; Увеличение значений переменных X, Y, Z, Q на 1
+mov eax, [X]
+inc eax
+mov [X], eax
+
+mov ebx, [Y]
+inc ebx
+mov [Y], ebx
+
+mov ecx, [Z]
+inc ecx
+mov [Z], ecx
+
+mov edx, [Q]
+inc edx
+mov [Q], edx
+
+; Вычисление суммы L = X + Y + Z + Q
+mov eax, [X]
+add eax, [Y]
+add eax, [Z]
+add eax, [Q]
+mov [L], eax
+
+; Вычисление M = (L & ~X) - (L & ~Y)
+mov eax, [L]
+not dword ptr [X]
+and eax, [X]
+mov edx, [L]
+not dword ptr [Y]
+and edx, [Y]
+sub eax, edx
+mov [M], eax
+
+; Проверка условия M >= 921B
+cmp eax, 921Bh
+jl less_than_921B
+
+; Вычисление R = (M / 2) - 12B9 для M >= 921B
+shr eax, 1
+sub eax, 12B9h
+mov [R], eax
+jmp check_even_odd
+
+less_than_921B:
+; Вычисление R = (M - Q') / 2 для M < 921B
+mov eax, [M]
+sub eax, [Q]
+shr eax, 1
+mov [R], eax
+
+mov eax, 0
+mov ebx, 0
+mov edx, 0
+mov ecx, 0
+
+check_even_odd:
+; Проверка четности R
+test eax, 1
+jnz odd ; Если нечетное, переход к метке odd
+jmp evan ; Если четное, переход к метке evan
+
+odd:
+; Если R нечетное, уменьшаем на 1
+sub eax, 1
+jmp exit
+
+evan:
+; Если R четное, выполняем (R or 009F)
+mov edx, 009Fh
+or eax, edx
+jmp exit
+
+exit:
+invoke ExitProcess, eax
+
+end Start
